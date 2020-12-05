@@ -6,8 +6,7 @@ const Home = (options) => {
   const { name } = options
   return (
     <div className={styles.aa}>
-      as
-      <h1 className={styles.bb}>hels是lo wossrld {name}</h1>
+      <h1 className={styles.bb}>hellow world {name}</h1>
     </div>
   )
 }

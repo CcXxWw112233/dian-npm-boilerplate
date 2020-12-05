@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Home from './components/Home'
 import dva from './dva'
 import models from './models'
 import { Provider } from 'react-redux'
+import CI from './components/index'
 
 const dvaApp = dva.createApp({
   initialState: {},
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Home />
+        <CI />
       </Provider>
     )
   }
