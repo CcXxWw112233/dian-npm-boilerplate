@@ -1,17 +1,26 @@
 import React, { Component, Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 import { hot } from 'react-hot-loader/root'
-import NotFound from '../page/NotFound'
+import NotFound from '../components/NotFound'
+import styles from './index.less'
+// import Home from '../page/Home'
+// import About from '../page/About'
+// import Topics from '../page/Topics'
 
-const Home = lazy(() => import('../page/Home'))
-const About = lazy(() => import('../page/About'))
-const Topics = lazy(() => import('../page/Topics'))
+const Home = lazy(() => import('../components/Home'))
+const About = lazy(() => import('../components/About'))
+const Topics = lazy(() => import('../components/Topics'))
+
+// const Topics = React.lazy(async () => {
+//     const com = await import("../page/Topics");
+//     return { default: com.default || com };
+// })
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className={styles.ccc}>
           <ul>
             <li>
               <Link to="/">Home</Link>

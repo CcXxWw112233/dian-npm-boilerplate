@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './index.less'
 import { connect } from 'react-redux'
-import VisualList from './VisualList'
 
 const Home = (options) => {
   const {
@@ -12,7 +11,6 @@ const Home = (options) => {
     <div className={styles.aa}>
       Home
       <div className={styles.bb}>{name}</div>
-      <VisualList girl_friends={girl_friends} />
     </div>
   )
 }
