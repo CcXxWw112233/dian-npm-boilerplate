@@ -1,29 +1,16 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
-const { srcPath, indexJsPath, indexHtmlPath } = require('./file.path.js')
+const { srcPath } = require('./file.path.js')
 var path = require('path')
-
-// 生成HTML文件
-const generateIndex = new HtmlWebpackPlugin({
-  inject: 'body',
-  filename: 'index.html',
-  template: indexHtmlPath,
-})
 
 module.exports = {
   // 基础目录（绝对路径），用于从配置中解析入口点和加载程序
   // 默认使用当前目录，但建议在配置中传递一个值。这使得您的配置独立于CWD（当前工作目录）
   context: srcPath,
-  // 入口文件
-  entry: [
-    'babel-polyfill', //react regeneratorRuntime is not defined
-    'react-hot-loader/patch',
-    indexJsPath,
-  ],
+
   resolve: {
     //配置别名，在项目中可缩减引用路径
     alias: {
-      '@': path.resolve('src'),
+      src: path.resolve('src'),
     },
   },
   // 模块配置
@@ -78,7 +65,6 @@ module.exports = {
   },
   // 插件配置
   plugins: [
-    generateIndex,
     // 开启全局的模块热替换(HMR)
     new webpack.HotModuleReplacementPlugin(),
     // 热加载中可以输入更加友好的模块名

@@ -1,14 +1,20 @@
 {
   "name": "dian-npm-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "for di-an web react npm dependencie develop bolerlpate",
-  "main": "index.js",
+  "main": "lib/app.js",
   "author": "a",
   "license": "ISC",
+  "files": [
+    "dist",
+    "lib"
+  ],
   "scripts": {
     "dev": "webpack-dev-server --mode=development --config config/webpack.dev.js",
     "start": "npm run dev",
-    "build": "webpack --mode=production --config config/webpack.prod.js",
+    "build": "npm run compile &&  npm run dist",
+    "dist": "webpack --mode=production --config config/webpack.prod.js",
+    "compile": "./node_modules/.bin/babel src --copy-files --source-maps --extensions .es6,.es,.jsx,.ts,.tsx,.js --out-dir lib",
     "lintfix": "eslint --fix --ext .js .ts .tsx src",
     "lint": "eslint --ext  .js .ts .tsx src",
     "test": "eslint --ext .js src test",
@@ -26,6 +32,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.8",
     "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/plugin-proposal-decorators": "^7.10.1",
@@ -46,7 +53,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^3.0.1",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^5.1.2",
     "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
     "eslint": "^7.3.1",

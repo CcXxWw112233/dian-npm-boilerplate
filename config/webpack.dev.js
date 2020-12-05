@@ -1,8 +1,17 @@
 const merge = require('webpack-merge')
 const base = require('./webpack.base.js')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const { indexJsPath, indexHtmlPath } = require('./file.path.js')
 
 module.exports = merge(base, {
   mode: 'development',
+  // 入口文件
+  entry: [
+    'babel-polyfill', //react regeneratorRuntime is not defined
+    'react-hot-loader/patch',
+    indexJsPath,
+  ],
   // 输入配置
   output: {
     publicPath: '/', // 配置该项热重载react-hot-loader才会生效
@@ -46,4 +55,12 @@ module.exports = merge(base, {
       },
     ],
   },
+  plugins: [
+    // 生成HTML文件
+    new HtmlWebpackPlugin({
+      inject: 'body',
+      filename: 'index.html',
+      template: indexHtmlPath,
+    }),
+  ],
 })

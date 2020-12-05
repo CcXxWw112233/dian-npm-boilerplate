@@ -1,19 +1,26 @@
 const merge = require('webpack-merge')
 const base = require('./webpack.base.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
 const webpack = require('webpack')
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const { appJsPath, srcPath } = require('./file.path.js')
+const { resolve } = require('path')
 
 module.exports = merge(base, {
   mode: 'production',
+  entry: {
+    index: ['babel-polyfill', appJsPath],
+    compA: ['babel-polyfill', resolve(srcPath, 'app.js')],
+  },
   output: {
     publicPath: './',
-    filename: 'builds.[hash].js',
+    filename: '[name].js',
     path: path.resolve('./dist'),
   },
   module: {
@@ -77,5 +84,12 @@ module.exports = merge(base, {
     }),
     new CleanWebpackPlugin(),
     new webpack.HashedModuleIdsPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: resolve(srcPath, './static'),
+        to: 'static',
+        ignore: ['.*'],
+      },
+    ]),
   ],
 })

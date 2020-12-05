@@ -11,8 +11,11 @@ const srcPath = resolve(projectPath, 'src')
 const indexJsPath = resolve(srcPath, 'index.js')
 const indexHtmlPath = resolve(srcPath, 'index.html')
 
+const appJsPath = resolve(srcPath, 'app.js')
+
 module.exports = {
   srcPath,
   indexJsPath,
   indexHtmlPath,
+  appJsPath,
 }
