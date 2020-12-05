@@ -50,7 +50,15 @@ module.exports = {
         use: [
           // 'style-loader',
           MiniCssExtractPlugin.loader, //可以打包出一个单独的css文件
-          'css-loader',
+          // 'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]_[local]_[hash:5]',
+              },
+            },
+          },
           'postcss-loader',
           {
             loader: 'less-loader',
