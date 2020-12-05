@@ -4,17 +4,15 @@ const { resolve } = require('path')
 const projectPath = process.cwd()
 // 代码地址目录
 
+// 入口文件src目录
 const srcPath = resolve(projectPath, 'src')
-// 入口文件目录
-const mainPath = resolve(srcPath, 'main')
 
 // 入口文件
-const indexJsPath = resolve(mainPath, 'index.js')
-const indexHtmlPath = resolve(mainPath, 'index.html')
+const indexJsPath = resolve(srcPath, 'index.js')
+const indexHtmlPath = resolve(srcPath, 'index.html')
 
 module.exports = {
   srcPath,
-  mainPath,
   indexJsPath,
   indexHtmlPath,
 }

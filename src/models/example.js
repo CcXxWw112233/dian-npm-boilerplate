@@ -1,12 +1,12 @@
 export default {
-  namespace: 'examples',
+  namespace: 'example',
   state: {
-    user_info: {},
+    name: 'di-an',
   },
   subscriptions: {},
   effects: {
-    *wechatAccountBind({ payload }, { select, call, put }) {
-      let res = yield call(wechatAccountBind, payload)
+    *getUserInfo({ payload }, { select, call, put }) {
+      // let res = yield call(wechatAccountBind, payload)
     },
   },
   reducers: {
