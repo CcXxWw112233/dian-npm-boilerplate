@@ -1,16 +1,3 @@
-// const merge = require('webpack-merge');
-// const base = require('./webpack.base.js');
-// const { resolve } = require('path')
-
-// module.exports = merge(base, {
-//     mode: 'production',
-//     output: {
-//         publicPath: './',// 配置该项热重载react-hot-loader才会生效
-//         filename: 'index.[hash].js',
-//         path: resolve('./dist'),
-//     },
-// })
-
 const merge = require('webpack-merge')
 const base = require('./webpack.base.js')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -29,7 +16,35 @@ module.exports = merge(base, {
     filename: 'builds.[hash].js',
     path: path.resolve('./dist'),
   },
-  module: {},
+  module: {
+    rules: [
+      {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader, //可以打包出一个单独的css文件
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[path][name]_[local]_[hash:5]',
+              },
+            },
+          },
+          'postcss-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
+    ],
+  },
   optimization: {
     minimize: true,
     minimizer: [

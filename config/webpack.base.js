@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const { srcPath, indexJsPath, indexHtmlPath } = require('./file.path.js')
 var path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // 生成HTML文件
 const generateIndex = new HtmlWebpackPlugin({
@@ -44,38 +43,6 @@ module.exports = {
       {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.less$/,
-        use: [
-          // 'style-loader',
-          MiniCssExtractPlugin.loader, //可以打包出一个单独的css文件
-          // 'css-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[path][name]_[local]_[hash:5]',
-              },
-            },
-          },
-          'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              modules: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          // 'style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-        ],
       },
       {
         test: /\.(html)$/,
@@ -120,59 +87,5 @@ module.exports = {
     new webpack.ProvidePlugin({
       React: 'react',
     }),
-    new MiniCssExtractPlugin({
-      //css打包单独立一个文件，而不是在js中生成
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
-    }),
   ],
 }
-
-// new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/) //忽略moment包里的locale包
-
-// noparse
-/**
- * module: {
- *   noParse: '/jquery/', //不解析jquery的相关依赖包
- *   rules: []
- * }
- */
-
-// 打包多个页面
-// entry多个，output多个， 多个new htmlwebpackplugin({template:'xx.html',chunks:[entry入口的chunks可选多个或单个]})
-
-// 抽离公共代码
-// module.exports = {
-//    //...
-//     optimization: {
-//       splitChunks: {
-//         chunks: 'async',
-//         minSize: 30000,
-//         minChunks: 1,
-//         maxAsyncRequests: 5,
-//         maxInitialRequests: 3,
-//         automaticNameDelimiter: '~',
-//         name: true,
-//         cacheGroups: {
-//           vendors: {
-//             test: /[\\/]node_modules[\\/]/,
-//             priority: -10
-//           },
-//           default: {
-//             minChunks: 2,
-//             priority: -20,
-//             reuseExistingChunk: true
-//           }
-//         }
-//       }
-//     }
-//   };
-
-// 动态链接库DLLPlugin 和 DLLReferencePlugin 用某种方法实现了拆分 bundles，同时还大大提升了构建的速度
-/**
- * 先将单独的比如react,react-dom构建好到一个文件里面
- * dllplugin会将文件产生映射生成maaifest.json文件
- * DllReferencePlugin会从映射中直接引用文件，提升打包速度
- *  */
-
-//  happypack 多线程提升打包速度

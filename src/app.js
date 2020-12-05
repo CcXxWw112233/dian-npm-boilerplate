@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { hot } from 'react-hot-loader/root'
 import Home from './components/Home'
 import dva from './dva'
 import models from './models'
