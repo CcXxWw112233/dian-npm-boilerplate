@@ -1,5 +1,5 @@
 class A {
   a = () => {
-    console(1)
+    console.log(1)
   }
 }

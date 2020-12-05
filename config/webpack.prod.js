@@ -16,7 +16,6 @@ module.exports = merge(base, {
   mode: 'production',
   entry: {
     index: ['babel-polyfill', appJsPath],
-    compA: ['babel-polyfill', resolve(srcPath, 'app.js')],
   },
   output: {
     publicPath: './',
