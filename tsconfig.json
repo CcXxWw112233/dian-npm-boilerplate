@@ -75,6 +75,6 @@
   "exclude": ["example", "node_modules", "dist", "lib"] /* 忽略编译文件*/,
   "include": [
     "src",
-    "typings.d.ts" //配置的.d.ts文件
+    "typings.d.ts", "example/index.tsx", "example/index.js" //配置的.d.ts文件
   ]
 }

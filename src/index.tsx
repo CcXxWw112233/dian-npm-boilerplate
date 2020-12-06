@@ -1,10 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './app'
-console.log('ssssssssaa', 1)
+import React, { Component } from 'react'
+import dva from './dva'
+import models from './models'
+import { Provider } from 'react-redux'
+import CI from './components/index'
 
-const render = () => {
-  ReactDOM.render(<App />, document.getElementById('root'))
+const dvaApp = dva.createApp({
+  models: models,
+})
+const store = dvaApp.getStore()
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <CI />
+      </Provider>
+    )
+  }
 }
-
-render()
+export default App
