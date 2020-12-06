@@ -3,24 +3,23 @@ import { create } from 'dva-core'
 interface App {
   _models: any[]
   _store: any
-  _plugin: Plugin
+  _plugin: any
   use: any
   model: (m: Object) => any
   start: () => void
+}
+interface SuperApp extends App {
   getStore: () => any
   dispatch: () => void
 }
-
 let store: any
 let dispatch
 let app: App
-// const window: {
-//   new (): Window
-//   prototype: Window
-// }
+let app2: SuperApp
+
 declare var window: Window & typeof globalThis
 
-function createApp(opt: { models: any[] }): App {
+function createApp(opt: { models: any[] }): SuperApp {
   //   if('development' == NODE_ENV) {
   //     // redux日志
   //     opt.onAction = [createLogger()];
@@ -33,13 +32,14 @@ function createApp(opt: { models: any[] }): App {
   }
   ;(<any>window).registered = true
   app.start()
+  app2 = <SuperApp>Object.assign(app)
 
   store = app._store
-  app.getStore = () => store
   dispatch = store.dispatch
+  app2.getStore = () => store
+  app2.dispatch = dispatch
 
-  app.dispatch = dispatch
-  return app
+  return app2
 }
 
 export default {

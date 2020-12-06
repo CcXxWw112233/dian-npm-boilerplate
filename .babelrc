@@ -4,9 +4,10 @@
     [
       "@babel/preset-env",
       {
-        "useBuiltIns": "entry"
+        "useBuiltIns": "usage"
       }
-    ]
+    ],
+    "@babel/typescript"
   ],
   "plugins": [
     [
@@ -16,6 +17,7 @@
       }
     ],
     "@babel/plugin-proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
     "@babel/plugin-transform-regenerator",
     "react-hot-loader/babel"
   ]

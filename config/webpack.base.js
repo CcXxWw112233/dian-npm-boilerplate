@@ -12,6 +12,7 @@ module.exports = {
     alias: {
       src: path.resolve('src'),
     },
+    extensions: ['.js', '.json', '.jsx', '.ts', '.tsx'],
   },
   // 模块配置
   module: {
