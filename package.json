@@ -12,7 +12,8 @@
   "scripts": {
     "dev": "webpack-dev-server --mode=development --config config/webpack.dev.js",
     "start": "npm run dev",
-    "build": "npm run compile &&  npm run dist",
+    "build": "npm run clear && npm run compile &&  npm run dist",
+    "clear": "./node_modules/.bin/rimraf lib",
     "dist": "webpack --mode=production --config config/webpack.prod.js",
     "compile": "./node_modules/.bin/babel src --copy-files --extensions .es6,.es,.jsx,.ts,.tsx,.js --out-dir lib",
     "lintfix": "eslint --fix --ext .js .ts .tsx src",
