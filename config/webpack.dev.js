@@ -6,6 +6,7 @@ const { indexJsPath, indexHtmlPath } = require('./file.path.js')
 
 module.exports = merge(base, {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   // 入口文件
   entry: [
     'babel-polyfill', //react regeneratorRuntime is not defined

@@ -14,6 +14,7 @@ const { resolve } = require('path')
 
 module.exports = merge(base, {
   mode: 'production',
+  devtool: 'cheap-module-source-map',
   entry: {
     index: ['babel-polyfill', appJsPath],
   },
