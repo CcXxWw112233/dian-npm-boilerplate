@@ -2,7 +2,7 @@
   "name": "dian-npm-boilerplate",
   "version": "1.0.6",
   "description": "for di-an web react npm dependencie develop bolerlpate",
-  "main": "lib/app.js",
+  "main": "lib/index.js",
   "author": "a",
   "license": "ISC",
   "files": [
@@ -96,9 +96,7 @@
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^4.2.2"
-  },
-  "dependencies": {
+    "webpack-merge": "^4.2.2",
     "axios": "^0.18.1",
     "dva": "^2.4.1",
     "dva-core": "^2.0.3",
@@ -110,5 +108,6 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4"
-  }
+  },
+  "dependencies": {}
 }
