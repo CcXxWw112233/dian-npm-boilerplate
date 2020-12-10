@@ -65,7 +65,7 @@
     // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
 
     /* Experimental Options */
-    // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
+    "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
@@ -75,6 +75,8 @@
   "exclude": ["example", "node_modules", "dist", "lib"] /* 忽略编译文件*/,
   "include": [
     "src",
-    "typings.d.ts", "example/index.tsx", "example/index.js" //配置的.d.ts文件
+    "typings.d.ts",
+    "example/index.tsx",
+    "example/index.js" //配置的.d.ts文件
   ]
 }
