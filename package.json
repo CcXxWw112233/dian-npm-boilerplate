@@ -15,7 +15,7 @@
     "build": " npm run compile &&  npm run dist",
     "clear": "./node_modules/.bin/rimraf lib",
     "dist": "webpack --mode=production --config config/webpack.prod.js",
-    "compile": "npm run clear && npm run compiletsc",
+    "compile": "npm run clear && npm run compilebabel && npm run compiletsc",
     "compilebabel": "./node_modules/.bin/babel src --copy-files --extensions .es6,.es,.jsx,.ts,.tsx,.js --out-dir lib",
     "compiletsc": "./node_modules/.bin/tsc --rootDir src",
     "lintfix": "eslint --fix --ext .js .ts .tsx src",
