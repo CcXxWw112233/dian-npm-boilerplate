@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true, // 允许引入没有默认导出的模块
-    "target": "ES2015",
-    "module": "commonjs",
-    "lib": ["DOM", "ES2015", "es6", "es5"],
+    "target": "es6",
+    "lib": ["dom", "es2017"],
     "allowJs": true,
-    "jsx": "react-native",
+    "jsx": "preserve",
     "declaration": true,
     "declarationDir": "./lib",
     "outDir": "./lib",
@@ -15,7 +14,13 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./",
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true
   },
   "exclude": ["example", "node_modules", "dist", "lib"],
   "include": ["src", "typings.d.ts"]

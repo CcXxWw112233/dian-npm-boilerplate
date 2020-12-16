@@ -1,19 +1,22 @@
 import React from 'react'
 import styles from './index.less'
 import { connect } from 'react-redux'
+import classNames from 'classnames/bind'
 
 interface PropsProperty {
   name: string
   age?: number
 }
+const clx = classNames.bind(styles)
+
 interface model_example {
   example: PropsProperty
 }
 const Home = (options: PropsProperty) => {
   const { name } = options
   return (
-    <div className={styles.aa}>
-      <h1 className={styles.bb}>hellow world {name}</h1>
+    <div className={clx({ aa: true })}>
+      <h1 className={clx({ bb: true })}>hellow world {name}</h1>
     </div>
   )
 }
