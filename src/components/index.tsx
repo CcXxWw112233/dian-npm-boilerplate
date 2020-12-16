@@ -1,8 +1,8 @@
-import { hot } from 'react-hot-loader/root'
+import React from 'react'
 import Home from './Home'
 
 function ComponentIndex() {
   return <Home />
 }
 
-export default hot(ComponentIndex)
+export default ComponentIndex
