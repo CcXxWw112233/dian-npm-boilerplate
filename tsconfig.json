@@ -4,7 +4,7 @@
     "target": "es6",
     "lib": ["dom", "es2017"],
     "allowJs": true,
-    "jsx": "preserve",
+    "jsx": "react",
     "declaration": true,
     "declarationDir": "./lib",
     "outDir": "./lib",
